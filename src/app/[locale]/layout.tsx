@@ -18,16 +18,22 @@ export function generateStaticParams() {
 
 export default function LocaleLayout({
   children,
-  params: { locale },
+  authorization,
+  params: {locale},
 }: {
   children: React.ReactNode;
+  authorization: React.ReactNode;
   params: { locale: string };
 }) {
   unstable_setRequestLocale(locale);
-
   return (
     <html lang={locale}>
-      <body>{children}</body>
+      <body>
+        <div className={"flex bgIndex min-h-screen bg-no-repeat bg-cover"}>
+          {children}
+          {authorization}
+        </div>
+      </body>
     </html>
   );
 }
