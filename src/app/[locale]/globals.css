@@ -32,6 +32,11 @@ body {
   }
 } */
 
+:root *{
+  --animate-duration: 500ms;
+  --animate-delay: 0.9s;
+}
+
 .bgIndex{
   background-image: url('../../../public/imgaes/bgMain.png');
   /* background-position: 0;

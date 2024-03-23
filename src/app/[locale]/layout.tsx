@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import 'animate.css';
+
 import { unstable_setRequestLocale } from "next-intl/server";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,11 +20,11 @@ export function generateStaticParams() {
 
 export default function LocaleLayout({
   children,
-  authorization,
+  login,
   params: {locale},
 }: {
   children: React.ReactNode;
-  authorization: React.ReactNode;
+  login: React.ReactNode;
   params: { locale: string };
 }) {
   unstable_setRequestLocale(locale);
@@ -31,7 +33,7 @@ export default function LocaleLayout({
       <body>
         <div className={"flex bgIndex min-h-screen bg-no-repeat bg-cover"}>
           {children}
-          {authorization}
+          {login}
         </div>
       </body>
     </html>

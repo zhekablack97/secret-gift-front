@@ -1,21 +1,18 @@
-'use client'
+import { Input } from "@/style/Input";
+import classNames from "classnames";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export const Authorization: React.FC = () => {
-  const router = useRouter()
-
-  console.log(router, 'router')
 
   return (
-    <div>
+    <div className="h-52 pt-10">
       <form action="">
         логин
-        <input type="text" name="" id="" />
+        <input type="text" className={Input.className} name="" id="" />
         пароль
         <input type="text" name="" id="" />
       </form>
-      <Link href="/forgotpaswword">Forgot paswword</Link>
+      <Link href="/ru/forgotpaswword">Forgot paswword</Link>
     </div>
   );
 };
