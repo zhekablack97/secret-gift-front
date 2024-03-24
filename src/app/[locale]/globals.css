@@ -33,7 +33,7 @@ body {
 } */
 
 :root *{
-  --animate-duration: 500ms;
+  --animate-duration: 1500ms;
   --animate-delay: 0.9s;
 }
 

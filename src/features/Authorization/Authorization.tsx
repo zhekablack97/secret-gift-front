@@ -12,7 +12,8 @@ export const Authorization: React.FC = () => {
         пароль
         <input type="text" name="" id="" />
       </form>
-      <Link href="/ru/forgotpaswword">Forgot paswword</Link>
+      <Link href="/ru/login/forgot-password">Forgot paswword</Link>
+      <Link href="/ru/login/registration" >Registration</Link>
     </div>
   );
 };

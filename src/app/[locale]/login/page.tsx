@@ -14,11 +14,8 @@ export default function Index({
 
   return (
     <div>
-      <h1 className="text-8xl font-black">Самая главная</h1>
-      
-      <Link href={`/${locale}/login/authorization`}>На авторизацию</Link>
-
-      <div>тут будет надеюсь красивый лендинг</div>
+      <h1 className="text-white text-8xl font-black">вход в личный кабинет </h1>
+      <Link href={`/${locale}/login/authorization`}>Войти в систему </Link>
     </div>
   );
 }
