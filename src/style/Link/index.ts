@@ -1,1 +1,7 @@
-export { ActiveLink } from "./Link";
+export {
+  NavActiveLink,
+  BaseNavLink,
+  NavLink,
+  NavLinkWithChildren,
+  NavLinkChildren
+} from "./Link";
