@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 export const BaseNavLink = {
-  className: "text-white h-12 flex items-center justify-center font-semibold ",
+  className: " h-12 flex items-center justify-center font-semibold ",
 };
 
 export const NavLink = {
@@ -23,5 +23,5 @@ export const NavLinkChildren = {
 };
 
 export const NavActiveLink = {
-  className: classNames(BaseNavLink.className, " bg-zinc-900 rounded-lg"),
+  className: classNames(BaseNavLink.className, " bg-zinc-900 rounded-lg text-white"),
 };
