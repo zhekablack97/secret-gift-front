@@ -70,11 +70,10 @@ export default function LocaleLayout({
                   "h-[calc(100vh_-_16px_-_16px)] mt-4 mx-4 rounded-2xl bg-white w-[calc(50vw_-_16px_-_16px)] p-4 flex items-center justify-center relative "
                 )}
               >
-                {login}
+                {children}
               </div>
             </motion.div>
           </div>
-          <div className="z-10">{children}</div>
         </div>
       </body>
     </html>

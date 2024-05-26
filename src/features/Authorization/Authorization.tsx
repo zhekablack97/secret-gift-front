@@ -10,7 +10,7 @@ export const Authorization: React.FC = () => {
         логин
         <input type="text" className={Input.className} name="" id="" />
         пароль
-        <input type="text" name="" id="" />
+        <input type="text" className={Input.className} name="" id="" />
       </form>
       <Link href="/ru/login/forgot-password">Forgot paswword</Link>
       <Link href="/ru/login/registration" >Registration</Link>

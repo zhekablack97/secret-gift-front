@@ -29,8 +29,12 @@ const mocData = [
 const Page: React.FC = () => {
   return (
     <main className="px-9 flex flex-col gap-6 grow">
-      <div>
+      <div className="flex">
         <h1 className={H1.className}>Мероприятия</h1>
+        <div className="ms-auto">
+        <button>Создать мероприятие</button>
+        </div>
+
       </div>
       <div className="flex gap-2">
         {mocData.map((item) => {
