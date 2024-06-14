@@ -5,7 +5,6 @@ const Page: React.FC = () => {
   return (
     <>
       регистрация <Link href="/ru/login/forgot-password">Forgot paswword</Link>
-      <Link href="/ru/login/authorization">Registration</Link>
     </>
   );
 };

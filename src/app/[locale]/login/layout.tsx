@@ -25,11 +25,9 @@ const variants = {
 
 export default function LocaleLayout({
   children,
-  login,
   params: { locale },
 }: {
   children: React.ReactNode;
-  login: React.ReactNode;
   params: { locale: string };
 }) {
   // unstable_setRequestLocale(locale);
@@ -38,20 +36,6 @@ export default function LocaleLayout({
 
   const pathname = usePathname();
 
-  useEffect(() => {
-    const dataPathname = pathname.split("/");
-
-    if (locales.includes(dataPathname[1]) && page.includes(dataPathname[3])) {
-      setIsOpen(true);
-    } else {
-      setIsOpen(false);
-    }
-  }, [pathname]);
-
-  const handleClose = () => {
-    router.push(`/${locale}/`);
-  };
-
   return (
     <html lang={locale}>
       <body>
@@ -59,20 +43,13 @@ export default function LocaleLayout({
           className={"flex bgIndex min-h-screen bg-no-repeat bg-cover relative"}
         >
           <div className="absolute left-0 top-0">
-            <motion.div
-              initial={"closed"}
-              animate={isOpen ? "open" : "closed"}
-              variants={variants}
-              transition={{ duration: 0.5 }}
+            <div
+              className={classNames(
+                "h-[calc(100vh_-_16px_-_16px)] mt-4 mx-4 rounded-2xl bg-white w-[calc(50vw_-_16px_-_16px)] p-4 flex items-center justify-center relative "
+              )}
             >
-              <div
-                className={classNames(
-                  "h-[calc(100vh_-_16px_-_16px)] mt-4 mx-4 rounded-2xl bg-white w-[calc(50vw_-_16px_-_16px)] p-4 flex items-center justify-center relative "
-                )}
-              >
-                {children}
-              </div>
-            </motion.div>
+              {children}
+            </div>
           </div>
         </div>
       </body>

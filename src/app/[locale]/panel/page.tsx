@@ -1,5 +1,3 @@
-import { ButtonPrimary } from "@/style/Button";
-import { H1 } from "@/style/Typography";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -31,11 +29,9 @@ const Page: React.FC = () => {
   return (
     <main className="px-9 flex flex-col gap-6 grow ">
       <div className="flex items-center">
-        <h1 className={H1.className}>Мероприятия</h1>
+        <h1>Мероприятия</h1>
         <div className="ms-auto">
-          <button className={ButtonPrimary.className}>
-            Создать мероприятие
-          </button>
+          <button>Создать мероприятие</button>
         </div>
       </div>
       <div className="flex gap-2">

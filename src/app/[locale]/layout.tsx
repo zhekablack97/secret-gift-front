@@ -4,6 +4,7 @@ import "./globals.css";
 import "animate.css";
 
 import { unstable_setRequestLocale } from "next-intl/server";
+import PrelineScript from "../components/PrelineScript";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function LocaleLayout({
   return (
     <html lang={locale}>
       <body>{children}</body>
+      <PrelineScript />
     </html>
   );
 }

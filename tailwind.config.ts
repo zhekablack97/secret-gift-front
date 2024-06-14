@@ -6,7 +6,8 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/features/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/style/**/*.{js,ts,jsx,tsx,mdx}"
+    "./src/style/**/*.{js,ts,jsx,tsx,mdx}",
+    "node_modules/preline/dist/*.js",
   ],
   theme: {
     extend: {
@@ -17,6 +18,8 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('preline/plugin'),
+  ],
 };
 export default config;

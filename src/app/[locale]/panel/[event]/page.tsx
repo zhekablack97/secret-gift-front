@@ -1,4 +1,3 @@
-import { H1 } from "@/style/Typography";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,7 +13,7 @@ const Page: React.FC = () => {
   return (
     <main className="px-9 flex flex-col gap-6 grow">
       <div>
-        <h1 className={H1.className}>{mocData.title}</h1>
+        <h1>{mocData.title}</h1>
       </div>
       <div className="flex">участники</div>
     </main>
