@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import "animate.css";
+import "./globals.scss";
 
-import { unstable_setRequestLocale } from "next-intl/server";
-import PrelineScript from "../components/PrelineScript";
+import { getMessages, unstable_setRequestLocale } from "next-intl/server";
+import PrelineScript from "@/components/PrelineScript";
+import { NextIntlClientProvider } from "next-intl";
+import { getLangDir } from "rtl-detect";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,18 +21,23 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params: { locale },
 }: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  unstable_setRequestLocale(locale);
+  const messages = await getMessages();
+  const direction = getLangDir(locale);
 
   return (
-    <html lang={locale}>
-      <body>{children}</body>
+    <html lang={locale} dir={direction}>
+      <NextIntlClientProvider messages={messages}>
+        <TooltipProvider>
+          <body>{children}</body>
+        </TooltipProvider>
+      </NextIntlClientProvider>
       <PrelineScript />
     </html>
   );

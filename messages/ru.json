@@ -1,5 +1,12 @@
 {
-  "Index": {
-    "title": "Привет мир"
+  "authorization": {
+    "title": "Вход",
+    "labelName": "Имя",
+    "labelPassword": "Пароль",
+    "inputName": "Введите имя",
+    "inputPassword": "Введите пароль",
+    "buttonLogin": "Войти",
+    "linkForgotPassword": "Забыли пароль",
+    "linkRegistration": "Регистрация"
   }
 }

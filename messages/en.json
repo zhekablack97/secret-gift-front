@@ -1,5 +1,12 @@
 {
-    "Index": {
-      "title": "Hello world!"
-    }
+  "authorization": {
+    "title": "Login",
+    "labelName": "Name",
+    "labelPassword": "Password",
+    "inputName": "Enter name",
+    "inputPassword": "Enter password",
+    "buttonLogin": "Log in",
+    "linkForgotPassword": "Forgot password?",
+    "linkRegistration": "Sign up"
   }
+}

@@ -10,7 +10,6 @@ export default function Index({
   params: { locale: string };
 }) {
   unstable_setRequestLocale(locale);
-  const t = useTranslations("Index");
 
   return (
     <div>
