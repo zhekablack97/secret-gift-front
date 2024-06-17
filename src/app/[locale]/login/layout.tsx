@@ -1,13 +1,4 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
 import { ChangeLanguage } from "@/features/ChangeLanguage";
-
-const variants = {
-  open: { opacity: 1, x: 0 },
-  closed: { opacity: 0, x: "-100%" },
-};
 
 export default function LocaleLayout({
   children,
