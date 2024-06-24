@@ -27,7 +27,7 @@ const mocData = [
 
 const Page: React.FC = () => {
   return (
-    <main className="px-9 flex flex-col gap-6 grow ">
+    <>
       <div className="flex items-center">
         <h1>Мероприятия</h1>
         <div className="ms-auto">
@@ -48,7 +48,7 @@ const Page: React.FC = () => {
           );
         })}
       </div>
-    </main>
+    </>
   );
 };
 
