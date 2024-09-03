@@ -7,6 +7,7 @@ import PrelineScript from "@/components/PrelineScript";
 import { NextIntlClientProvider } from "next-intl";
 import { getLangDir } from "rtl-detect";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import StoreProvider from "@/features/StoreProvider/StoreProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,19 +25,21 @@ export function generateStaticParams() {
 export default async function LocaleLayout({
   children,
   params: { locale },
-}: {
+}: Readonly<{
   children: React.ReactNode;
   params: { locale: string };
-}) {
+}>) {
   const messages = await getMessages();
   const direction = getLangDir(locale);
 
   return (
     <html lang={locale} dir={direction}>
       <NextIntlClientProvider messages={messages}>
-        <TooltipProvider>
-          <body>{children}</body>
-        </TooltipProvider>
+        <StoreProvider>
+          <TooltipProvider>
+            <body>{children}</body>
+          </TooltipProvider>
+        </StoreProvider>
       </NextIntlClientProvider>
       <PrelineScript />
     </html>

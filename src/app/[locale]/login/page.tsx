@@ -13,7 +13,7 @@ export default function Index({
 
   return (
     <div>
-      <h1 className="text-white text-8xl font-black">вход в личный кабинет </h1>
+      <h1 className=" text-8xl font-black">вход в личный кабинет </h1>
       <Link href={`/${locale}/login/authorization`}>Войти в систему </Link>
     </div>
   );
