@@ -1,13 +1,19 @@
-import { pokemonApi } from "@/api/auth/authService";
+import { authApi } from "@/api/auth/authService";
+import { authReducer } from "../slice/authSlice";
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
+import { eventApi } from "@/api/event/eventService";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      [pokemonApi.reducerPath]: pokemonApi.reducer,
+      auth: authReducer,
+      [authApi.reducerPath]: authApi.reducer,
+      [eventApi.reducerPath]: eventApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(pokemonApi.middleware),
+      getDefaultMiddleware()
+        .concat(authApi.middleware)
+        .concat(eventApi.middleware),
   });
 };
 

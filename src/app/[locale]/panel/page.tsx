@@ -1,3 +1,4 @@
+import { Events } from "@/features/Events";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -35,6 +36,7 @@ const Page: React.FC = () => {
         </div>
       </div>
       <div className="flex gap-2">
+        <Events />
         {mocData.map((item) => {
           return (
             <article key={item.id}>
