@@ -12,7 +12,8 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import Cookies from "js-cookie";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { cn } from "@/lib";
 
 export const Authorization: React.FC = () => {
   const t = useTranslations("authorization");
@@ -26,12 +27,12 @@ export const Authorization: React.FC = () => {
     handleSubmit,
     watch,
     formState: { errors },
+    setError,
   } = useForm<AuthType>();
 
   const expires = new Date(new Date().getTime() + 24 * 6 * 60 * 60 * 1000);
 
   const onSubmit: SubmitHandler<AuthType> = (data) => {
-    console.log(data);
     auth(data)
       .unwrap()
       .then((response) => {
@@ -43,10 +44,22 @@ export const Authorization: React.FC = () => {
         router.push("/panel/");
       })
       .catch((error) => {
-        // Handle error.
-        console.log("An error occurred:", error.response);
+        // Обрабатываем ошибку
+
+        const res = JSON.parse(error.data);
+
+        if (
+          res.error.status === 400 &&
+          res.error?.message === "Invalid identifier or password"
+        ) {
+          setError("root", { message: t("errorInvalidCredentials") }); // Сообщение о неверных данных
+        } else {
+          setError("root", { message: t("errorUnknown") }); // Общая ошибка
+        }
       });
   };
+
+  console.log(errors, "errors");
 
   return (
     <div className="w-full flex flex-col gap-20 max-w-sm">
@@ -66,12 +79,18 @@ export const Authorization: React.FC = () => {
               required: true,
             }}
             render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                placeholder="First name"
-                onBlur={onBlur}
-                onChange={onChange}
-                value={value}
-              />
+              <>
+                <Input
+                  placeholder="First name"
+                  onBlur={onBlur}
+                  className={cn(
+                    errors.root || errors.identifier ? "border-red-600" : ""
+                  )}
+                  onChange={onChange}
+                  value={value}
+                />
+                <span>{errors.identifier?.message}</span>
+              </>
             )}
             name="identifier"
           />
@@ -84,17 +103,24 @@ export const Authorization: React.FC = () => {
               required: true,
             }}
             render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                type="password"
-                placeholder="First name"
-                onBlur={onBlur}
-                onChange={onChange}
-                value={value}
-              />
+              <>
+                <Input
+                  type="password"
+                  placeholder="First name"
+                  onBlur={onBlur}
+                  onChange={onChange}
+                  className={cn(
+                    errors.root || errors.password ? "border-red-600" : ""
+                  )}
+                  value={value}
+                />
+                <span className="text-red-600">{errors.password?.message}</span>
+              </>
             )}
             name="password"
           />
         </div>
+        <span className="text-red-600">{errors.root?.message}</span>
         <Button size={"lg"} type="submit">
           {t("buttonLogin")}
         </Button>

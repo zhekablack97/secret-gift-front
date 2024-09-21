@@ -7,6 +7,8 @@
     "inputPassword": "Enter password",
     "buttonLogin": "Log in",
     "linkForgotPassword": "Forgot password?",
-    "linkRegistration": "Sign up"
+    "linkRegistration": "Sign up",
+    "errorUnknown": "An unknown error occurred. Please try again.",
+    "errorInvalidCredentials": "Invalid login or password. Please check your credentials."
   }
 }
