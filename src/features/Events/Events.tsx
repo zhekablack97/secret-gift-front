@@ -1,11 +1,14 @@
 "use client";
 
 import { useGetEventsQuery } from "@/api/event/eventService";
+import { LocaleKeys } from "@/constants";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 import { FC } from "react";
 
 export const Events: FC = () => {
-  const { data } = useGetEventsQuery();
+  const locale = useLocale() as LocaleKeys;
+  const { data } = useGetEventsQuery({ locale });
 
   console.log(data);
   return (

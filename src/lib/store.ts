@@ -2,6 +2,7 @@ import { authApi } from "@/api/auth/authService";
 import { authReducer } from "../slice/authSlice";
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import { eventApi } from "@/api/event/eventService";
+import { imageApi } from "@/api/upload/uploadService";
 
 export const makeStore = () => {
   return configureStore({
@@ -9,11 +10,13 @@ export const makeStore = () => {
       auth: authReducer,
       [authApi.reducerPath]: authApi.reducer,
       [eventApi.reducerPath]: eventApi.reducer,
+      [imageApi.reducerPath]: imageApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware()
         .concat(authApi.middleware)
-        .concat(eventApi.middleware),
+        .concat(eventApi.middleware)
+        .concat(imageApi.middleware),
   });
 };
 

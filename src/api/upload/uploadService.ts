@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { HYDRATE } from "next-redux-wrapper";
 import Cookies from "js-cookie";
 import { EventsType } from "@/types/EventsType";
-import { LocaleKeys } from "@/constants";
+import { ImageUploadResponse } from "@/types/UploadImageService";
 
 type RootState = any; // normally inferred from statebaseQueryWithReauthprepareHeaders
 
@@ -14,8 +14,8 @@ function isHydrateAction(action: Action): action is PayloadAction<RootState> {
 }
 
 // Define a service using a base URL and expected endpoints
-export const eventApi = createApi({
-  reducerPath: "eventApi",
+export const imageApi = createApi({
+  reducerPath: "imageApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:1337/api/",
     prepareHeaders: (headers) => {
@@ -32,18 +32,14 @@ export const eventApi = createApi({
     }
   },
   endpoints: (builder) => ({
-    getEvents: builder.query<EventsType, { locale?: LocaleKeys }>({
-      query: ({ locale = "en" }) => ({
-        url: `events/`,
-        params: {
-          // populate: "*",
-          locale,
-        },
+    uploadImage: builder.mutation<ImageUploadResponse[], FormData>({
+      query: (formData) => ({
+        url: "upload", // эндпоинт Strapi для загрузки файлов
+        method: "POST",
+        body: formData,
       }),
     }),
   }),
 });
 
-// Export hooks for usage in function components, which are
-// auto-generated based on the defined endpoints
-export const { useGetEventsQuery, useLazyGetEventsQuery } = eventApi;
+export const { useUploadImageMutation } = imageApi;

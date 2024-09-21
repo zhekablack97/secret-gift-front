@@ -119,16 +119,18 @@ export interface EventPost {
   data: EventPostData;
 }
 
+export type EventTypeField = "custom" | "secret-santa";
+
 export interface EventPostData {
-  bgImage: string;
-  event_type: string;
+  bgImage: number;
+  event_type: EventTypeField;
   name: string;
-  icon: string;
+  icon: number;
   budget: number;
   users_permissions_users: string[];
   location: string;
   reminder: boolean;
-  date_purchase_gifts: string;
-  date_gift_delivery: string;
+  date_purchase_gifts: Date;
+  date_gift_delivery: Date;
   locale: string;
 }
