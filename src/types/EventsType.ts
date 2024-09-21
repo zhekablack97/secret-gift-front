@@ -114,3 +114,21 @@ export interface Pagination {
   pageCount: number;
   total: number;
 }
+
+export interface EventPost {
+  data: EventPostData;
+}
+
+export interface EventPostData {
+  bgImage: string;
+  event_type: string;
+  name: string;
+  icon: string;
+  budget: number;
+  users_permissions_users: string[];
+  location: string;
+  reminder: boolean;
+  date_purchase_gifts: string;
+  date_gift_delivery: string;
+  locale: string;
+}

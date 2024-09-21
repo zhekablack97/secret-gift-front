@@ -1,3 +1,12 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { AddEvents } from "@/features/AddEvents";
 import { Events } from "@/features/Events";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,9 +40,7 @@ const Page: React.FC = () => {
     <>
       <div className="flex items-center">
         <h1>Мероприятия</h1>
-        <div className="ms-auto">
-          <button>Создать мероприятие</button>
-        </div>
+        <AddEvents />
       </div>
       <div className="flex gap-2">
         <Events />
